@@ -38,7 +38,6 @@ jobs:
       CCACHE_DIR: ${{ github.workspace }}/.ccache
       CCACHE_COMPRESS: "1"
       CCACHE_MAXSIZE: 2G
-      MAKE_JOBS: -j$(nproc)
 
     steps:
       - name: Free disk space
@@ -100,12 +99,15 @@ jobs:
           grep -E "CONFIG_TARGET_(mediatek|DEVICE_mediatek_filogic_DEVICE_${DEVICE})|CONFIG_CCACHE" .config
 
       - name: Download sources
-        run: make download ${MAKE_JOBS}
+        run: |
+          JOBS=$(nproc)
+          make download -j"${JOBS}"
 
       - name: Build firmware
         run: |
+          JOBS=$(nproc)
           ccache -z
-          make ${MAKE_JOBS} V=s
+          make -j"${JOBS}" V=s
           ccache -s
 
       - name: Collect artifacts
@@ -167,7 +169,6 @@ jobs:
       CCACHE_DIR: ${{ github.workspace }}/.ccache
       CCACHE_COMPRESS: "1"
       CCACHE_MAXSIZE: 2G
-      MAKE_JOBS: -j$(nproc)
 
     steps:
       - name: Free disk space
@@ -229,12 +230,15 @@ jobs:
           grep -E "CONFIG_TARGET_(mediatek|DEVICE_mediatek_filogic_DEVICE_${DEVICE})|CONFIG_CCACHE" .config
 
       - name: Download sources
-        run: make download ${MAKE_JOBS}
+        run: |
+          JOBS=$(nproc)
+          make download -j"${JOBS}"
 
       - name: Build firmware
         run: |
+          JOBS=$(nproc)
           ccache -z
-          make ${MAKE_JOBS} V=s
+          make -j"${JOBS}" V=s
           ccache -s
 
       - name: Collect artifacts
