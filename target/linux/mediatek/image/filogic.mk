@@ -2439,14 +2439,17 @@ define Device/nradio_c5800-688
 	wifi-dats wifi-profile mtwifi-cfg luci-app-mtwifi-cfg \
 	python3-light luci-theme-argon uhttpd uhttpd-mod-ubus \
 	f2fsck mkf2fs \
-	kmod-usb3 kmod-usb-xhci-hcd kmod-usb-xhci-mtk \
-	kmod-usb-acm kmod-usb-net kmod-usb-net-cdc-ether \
+	kmod-usb3 kmod-usb-core kmod-usb-xhci-hcd kmod-usb-xhci-mtk \
+	kmod-usb-acm kmod-usb-ehci kmod-usb-ohci kmod-usb-uhci \
+	kmod-usb-storage kmod-usb-net kmod-usb-net-cdc-ether \
 	kmod-usb-net-cdc-mbim kmod-usb-net-cdc-ncm \
-	kmod-usb-net-qmi-wwan kmod-usb-net-rndis \
-	kmod-usb-net-sierrawireless \
+	kmod-usb-net-huawei-cdc-ncm kmod-usb-net-qmi-wwan \
+	kmod-usb-net-qmi-wwan-fibocom kmod-usb-net-qmi-wwan-quectel \
+	kmod-usb-net-rndis kmod-usb-net-sierrawireless \
 	kmod-usb-serial kmod-usb-serial-option \
 	kmod-usb-serial-qualcomm kmod-usb-serial-wwan \
-	kmod-usb-wdm
+	kmod-usb-wdm kmod-mhi-bus kmod-mhi-pci-generic \
+	kmod-mhi-net kmod-mhi-wwan-ctrl kmod-mhi-wwan-mbim
 endef
 TARGET_DEVICES += nradio_c5800-688
 
@@ -2460,13 +2463,16 @@ define Device/nradio_c8-688
 	wifi-dats wifi-profile mtwifi-cfg luci-app-mtwifi-cfg \
 	python3-light luci-theme-argon uhttpd uhttpd-mod-ubus \
 	f2fsck mkf2fs \
-	kmod-usb3 kmod-usb-xhci-hcd kmod-usb-xhci-mtk \
-	kmod-usb-acm kmod-usb-core kmod-usb-ehci \
-	kmod-usb-net kmod-usb-net-cdc-ether \
-	kmod-usb-net-cdc-ncm kmod-usb-net-huawei-cdc-ncm \
-	kmod-usb-net-rndis kmod-usb-ohci \
+	kmod-usb3 kmod-usb-core kmod-usb-xhci-hcd kmod-usb-xhci-mtk \
+	kmod-usb-acm kmod-usb-ehci kmod-usb-ohci kmod-usb-uhci \
+	kmod-usb-storage kmod-usb-net kmod-usb-net-cdc-ether \
+	kmod-usb-net-cdc-mbim kmod-usb-net-cdc-ncm \
+	kmod-usb-net-huawei-cdc-ncm kmod-usb-net-qmi-wwan \
+	kmod-usb-net-qmi-wwan-fibocom kmod-usb-net-qmi-wwan-quectel \
+	kmod-usb-net-rndis kmod-usb-net-sierrawireless \
 	kmod-usb-serial kmod-usb-serial-option \
-	kmod-usb-serial-wwan kmod-usb-storage \
-	kmod-usb-uhci kmod-usb-wdm
+	kmod-usb-serial-qualcomm kmod-usb-serial-wwan \
+	kmod-usb-wdm kmod-mhi-bus kmod-mhi-pci-generic \
+	kmod-mhi-net kmod-mhi-wwan-ctrl kmod-mhi-wwan-mbim
 endef
 TARGET_DEVICES += nradio_c8-688
