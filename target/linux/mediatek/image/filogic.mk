@@ -2434,6 +2434,7 @@ define Device/nradio_c5800-688
   DEVICE_MODEL := C5800-688
   DEVICE_DTS := mt7981-nradio-c5800-688
   DEVICE_DTS_DIR := ../dts
+  BOARD_NAME := HCMT7981-emmc
   DEVICE_PACKAGES := \
 	kmod-conninfra kmod-mediatek_hnat kmod-mt_wifi kmod-warp \
 	wifi-dats wifi-profile mtwifi-cfg luci-app-mtwifi-cfg \
@@ -2450,6 +2451,10 @@ define Device/nradio_c5800-688
 	kmod-usb-serial-qualcomm kmod-usb-serial-wwan \
 	kmod-usb-wdm kmod-mhi-bus kmod-mhi-pci-generic \
 	kmod-mhi-net kmod-mhi-wwan-ctrl kmod-mhi-wwan-mbim
+  KERNEL := kernel-bin | lzma | fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb
+  KERNEL_INITRAMFS := kernel-bin | lzma | \
+	fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb with-initrd | pad-to 64k
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
 endef
 TARGET_DEVICES += nradio_c5800-688
 
@@ -2458,6 +2463,7 @@ define Device/nradio_c8-688
   DEVICE_MODEL := C8-688
   DEVICE_DTS := mt7981-nradio-c8-688
   DEVICE_DTS_DIR := ../dts
+  BOARD_NAME := HCMT7981-688-emmc
   DEVICE_PACKAGES := \
 	kmod-conninfra kmod-mediatek_hnat kmod-mt_wifi kmod-warp \
 	wifi-dats wifi-profile mtwifi-cfg luci-app-mtwifi-cfg \
@@ -2474,5 +2480,9 @@ define Device/nradio_c8-688
 	kmod-usb-serial-qualcomm kmod-usb-serial-wwan \
 	kmod-usb-wdm kmod-mhi-bus kmod-mhi-pci-generic \
 	kmod-mhi-net kmod-mhi-wwan-ctrl kmod-mhi-wwan-mbim
+  KERNEL := kernel-bin | lzma | fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb
+  KERNEL_INITRAMFS := kernel-bin | lzma | \
+	fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb with-initrd | pad-to 64k
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
 endef
 TARGET_DEVICES += nradio_c8-688
